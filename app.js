@@ -14,6 +14,7 @@ const formatsLogger =
 app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
+
 mongoose
   .connect(process.env.MONGO_URL)
   .then((con) => {
@@ -23,9 +24,13 @@ mongoose
     console.log(err);
     process.exit(1);
   });
+// ROUTERS ===================================================================  
 app.use("/api/contacts", contactsRouter);
+app.use("/users", contactsRouter);
+// ===========================================================================
 app.use(logger(formatsLogger));
 app.use(cors());
+
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
 });

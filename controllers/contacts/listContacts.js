@@ -1,7 +1,7 @@
 const Contact = require("../../models/contactsModel");
 const AppError = require("../../helpers/AppError");
 
-exports.listContacts = async (req, res, next) => {
+module.exports = async (req, res, next) => {
   try {
     const allContacts = await Contact.find();
     if (!allContacts) {

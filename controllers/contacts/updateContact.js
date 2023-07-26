@@ -4,11 +4,7 @@ const {
   contactsValidationSchema,
 } = require("../../helpers/contactsValidator");
 
-exports.updateContact = async (
-  req,
-  res,
-  next
-) => {
+module.exports = async (req, res, next) => {
   try {
     const { error, value } =
       contactsValidationSchema(req.body);

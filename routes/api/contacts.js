@@ -7,7 +7,7 @@ const {
   getContactById,
   updateContact,
   updateContactsFavorite,
-} = require("../../controllers/contactControllers");
+} = require("../../controllers/contacts");
 router.get("/", listContacts);
 router.get("/:contactId", getContactById);
 router.post("/", addContact);
