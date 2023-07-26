@@ -1,17 +1,8 @@
 const Contact = require("../../models/contactsModel");
-const AppError = require("../../helpers/AppError");
-const {
-  contactsValidationSchema,
-} = require("../../helpers/contactsValidator");
 
 module.exports = async (req, res, next) => {
   try {
-    const { error, value } =
-      contactsValidationSchema(req.body);
-    if (error) {
-      throw AppError(404, error.message);
-    }
-    const result = await Contact.create(value);
+    const result = await Contact.create(req.body);
     res.status(201).json(result);
   } catch (error) {
     next(error);

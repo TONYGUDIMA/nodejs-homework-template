@@ -13,4 +13,3 @@ module.exports = {
   updateContact,
   updateContactsFavorite,
 };
-console.log("module", module);
