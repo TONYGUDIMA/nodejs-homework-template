@@ -1,5 +1,4 @@
 const AppError = require("../helpers/AppError");
-// const contacts = require("../models/contacts");
 const {
   contactsValidationSchema,
 } = require("../helpers/contactsValidator");
@@ -12,7 +11,7 @@ exports.listContacts = async (req, res, next) => {
       throw AppError(404, "Not found");
     }
     res.status(200).json({
-      message: "template message",
+      message: "All contacts",
       contacts: allContacts,
     });
   } catch (error) {
