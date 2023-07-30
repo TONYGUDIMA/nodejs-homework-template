@@ -18,6 +18,10 @@ const contactSchema = new Schema(
     owner: {
       type: Schema.Types.ObjectId,
       ref: "User",
+      required: [
+        true,
+        "Contact must have an owner...",
+      ],
     },
   },
   {

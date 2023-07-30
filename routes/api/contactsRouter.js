@@ -10,7 +10,12 @@ const {
   getContactById,
   updateContact,
   updateContactsFavorite,
-} = require("../../controllers/contacts");
+} = require("../../controllers/contactsControllers");
+
+const {
+  protect,
+} = require("../../middlewares/authMiddlewares");
+router.use(protect);
 router.get("/", listContacts);
 router.get("/:contactId", getContactById);
 router.post("/", checkContactData, addContact);
@@ -24,4 +29,5 @@ router.put(
   "/:contactId/favorite",
   updateContactsFavorite
 );
+
 module.exports = router;
