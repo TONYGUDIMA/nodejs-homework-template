@@ -1,15 +1,15 @@
 const {
-  contactsValidationSchema,
-} = require("../helpers/contactsValidator");
+  usersValidationSchema,
+} = require("../helpers/usersValidator");
 const AppError = require("../helpers/AppError");
-exports.checkContactData = async (
+exports.checkUserData = async (
   req,
   res,
   next
 ) => {
   try {
     const { error, value } =
-      contactsValidationSchema(req.body);
+      usersValidationSchema(req.body);
     if (error) {
       throw AppError(404, error.message);
     } else {

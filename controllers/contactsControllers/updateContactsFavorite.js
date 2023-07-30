@@ -1,7 +1,7 @@
 const Contact = require("../../models/contactsModel");
 const AppError = require("../../helpers/AppError");
 
-exports.updateContactsFavorite = async (
+module.exports = async (
   req,
   res,
   next

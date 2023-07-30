@@ -1,11 +1,7 @@
 const Contact = require("../../models/contactsModel");
 const AppError = require("../../helpers/AppError");
 
-exports.removeContact = async (
-  req,
-  res,
-  next
-) => {
+module.exports = async (req, res, next) => {
   try {
     const { contactId } = req.params;
     const result =
