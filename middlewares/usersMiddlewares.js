@@ -2,6 +2,9 @@ const {
   usersValidationSchema,
 } = require("../helpers/usersValidator");
 const AppError = require("../helpers/AppError");
+const {
+  initUploadMiddleware,
+} = require("../services/multerService");
 exports.checkUserData = async (
   req,
   res,
@@ -21,3 +24,5 @@ exports.checkUserData = async (
     next(error);
   }
 };
+exports.uploadAvavtar =
+  initUploadMiddleware("avatar");

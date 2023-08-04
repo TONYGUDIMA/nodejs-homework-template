@@ -2,7 +2,6 @@ const Contact = require("../../models/contactsModel");
 const AppError = require("../../helpers/AppError");
 module.exports = async (req, res, next) => {
   try {
-    console.log(req.user);
     const allContacts = await Contact.find({
       owner: req.user.id,
     });
