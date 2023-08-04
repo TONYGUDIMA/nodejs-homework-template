@@ -12,10 +12,8 @@ exports.protect = async (req, res, next) => {
   const currentUser = await User.findById(userId);
   if (!currentUser)
     throw AppError(401, "Not logged in..");
-  currentUser.password = undefined;
   currentUser.token =
     req.headers.authorization.split(" ")[1];
   req.user = currentUser;
-
   next();
 };
