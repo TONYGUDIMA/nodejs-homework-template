@@ -10,6 +10,8 @@ const {
   userLogout,
   getCurrentUser,
   userUpdate,
+  userVerify,
+  sendVerificationEmail
 } = require("../../controllers/userControllers");
 const {
   protect,
@@ -23,6 +25,11 @@ router.post(
 router.post("/login", checkUserData, userLogin);
 router.post("/logout", protect, userLogout);
 router.get("/current", protect, getCurrentUser);
+router.post('/verify', sendVerificationEmail)
+router.get(
+  "/verify/:verificationToken",
+  userVerify
+);
 router.patch(
   "/avatars",
   protect,
