@@ -1,7 +1,8 @@
 const User = require("../../models/userModel");
-
+const uuid = require("uuid").v4;
 const AppError = require("../../helpers/AppError");
 const generateAvatarUrl = require("../../services/gravatarGen");
+const nodemailerService = require("../../services/nodemailerService");
 module.exports = async (req, res, next) => {
   try {
     const userExists = await User.exists({
@@ -13,10 +14,17 @@ module.exports = async (req, res, next) => {
     const avatarUrl = generateAvatarUrl(
       req.body.email
     );
-    const newUser = await User.create({
+    const verificationToken = uuid();
+    const newUser = {
       ...req.body,
       avatarUrl,
-    });
+      verificationToken,
+    };
+    await User.create(newUser);
+    await nodemailerService(
+      newUser,
+      "localhost:3000"
+    );
     newUser.password = undefined;
     res.status(201).json({
       msg: "Succes",
